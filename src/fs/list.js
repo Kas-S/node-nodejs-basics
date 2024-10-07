@@ -1,5 +1,10 @@
+import { readdir } from 'node:fs/promises';
+
 const list = async () => {
-    // Write your code here 
+  const entries = await readdir('files');
+  for (const entry of entries) {
+    console.log(entry);
+  }
 };
 
 await list();
