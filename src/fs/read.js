@@ -5,6 +5,7 @@ const read = async () => {
     const file = await open('files/fileToRead.txt', 'r+');
     const data = await file.readFile({ encoding: 'utf8' });
     console.log(data);
+    file.close();
   } catch (err) {
     throw new Error('FS operation failed');
   }
