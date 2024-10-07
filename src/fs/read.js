@@ -1,9 +1,12 @@
-import { readdir } from 'node:fs/promises';
+import { open } from 'node:fs/promises';
 
 const read = async () => {
-  const entries = await readdir('files');
-  for (const entry of entries) {
-    console.log(entry);
+  try {
+    const file = await open('files/fileToRead.txt', 'r+');
+    const data = await file.readFile({ encoding: 'utf8' });
+    console.log(data);
+  } catch (err) {
+    throw new Error('FS operation failed');
   }
 };
 
